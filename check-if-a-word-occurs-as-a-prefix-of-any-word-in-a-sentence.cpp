@@ -44,3 +44,16 @@ Constraints:
         return  -1;
     }
 };
+class Solution {
+public:
+    int isPrefixOfWord(string s, string searchWord) {
+        string str = "";
+        int count=1;
+        for(int i=0;s[i]!='\0';i++){
+            str+=s[i];
+            if(str==searchWord)return count;
+            if(s[i]==' '){
+                count++;
+                str="";
+            }
+        } 
