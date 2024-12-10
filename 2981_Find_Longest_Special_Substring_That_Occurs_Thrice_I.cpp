@@ -1,4 +1,4 @@
-/*Can you solve this real interview question? Find Longest Special Substring That Occurs Thrice I - You are given a string s that consists of lowercase English letters.
+/*Can you solve this real interview question? Find Longest Special Substring That Occurs Thrice II - You are given a string s that consists of lowercase English letters.
 
 A string is called special if it is made up of only a single character. For example, the string "abc" is not special, whereas the strings "ddd", "zz", and "f" are special.
 
@@ -38,7 +38,7 @@ It can be shown that the maximum length achievable is 1.
 
 Constraints:
 
- * 3 <= s.length <= 50
+ * 3 <= s.length <= 5 * 105
  * s consists of only lowercase English letters.*/
 
 
