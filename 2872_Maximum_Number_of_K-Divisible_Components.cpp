@@ -1,52 +1,51 @@
-/*Can you solve this real interview question? Maximum Number of K-Divisible Components - There is an undirected tree with n nodes labeled from 0 to n - 1. You are given the integer n and a 2D integer array edges of length n - 1, where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the tree.
+/*Can you solve this real interview question? Find Building Where Alice and Bob Can Meet - You are given a 0-indexed array heights of positive integers, where heights[i] represents the height of the ith building.
 
-You are also given a 0-indexed integer array values of length n, where values[i] is the value associated with the ith node, and an integer k.
+If a person is in building i, they can move to any other building j if and only if i < j and heights[i] < heights[j].
 
-A valid split of the tree is obtained by removing any set of edges, possibly empty, from the tree such that the resulting components all have values that are divisible by k, where the value of a connected component is the sum of the values of its nodes.
+You are also given another array queries where queries[i] = [ai, bi]. On the ith query, Alice is in building ai while Bob is in building bi.
 
-Return the maximum number of components in any valid split.
+Return an array ans where ans[i] is the index of the leftmost building where Alice and Bob can meet on the ith query. If Alice and Bob cannot move to a common building on query i, set ans[i] to -1.
 
  
 
 Example 1:
 
-[https://assets.leetcode.com/uploads/2023/08/07/example12-cropped2svg.jpg]
 
+Input: heights = [6,4,8,5,2,7], queries = [[0,1],[0,3],[2,4],[3,4],[2,2]]
+Output: [2,5,-1,5,2]
+Explanation: In the first query, Alice and Bob can move to building 2 since heights[0] < heights[2] and heights[1] < heights[2]. 
+In the second query, Alice and Bob can move to building 5 since heights[0] < heights[5] and heights[3] < heights[5]. 
+In the third query, Alice cannot meet Bob since Alice cannot move to any other building.
+In the fourth query, Alice and Bob can move to building 5 since heights[3] < heights[5] and heights[4] < heights[5].
+In the fifth query, Alice and Bob are already in the same building.  
+For ans[i] != -1, It can be shown that ans[i] is the leftmost building where Alice and Bob can meet.
+For ans[i] == -1, It can be shown that there is no building where Alice and Bob can meet.
 
-Input: n = 5, edges = [[0,2],[1,2],[1,3],[2,4]], values = [1,8,1,4,4], k = 6
-Output: 2
-Explanation: We remove the edge connecting node 1 with 2. The resulting split is valid because:
-- The value of the component containing nodes 1 and 3 is values[1] + values[3] = 12.
-- The value of the component containing nodes 0, 2, and 4 is values[0] + values[2] + values[4] = 6.
-It can be shown that no other valid split has more than 2 connected components.
 
 Example 2:
 
-[https://assets.leetcode.com/uploads/2023/08/07/example21svg-1.jpg]
 
+Input: heights = [5,3,8,2,6,1,4,6], queries = [[0,7],[3,5],[5,2],[3,0],[1,6]]
+Output: [7,6,-1,4,6]
+Explanation: In the first query, Alice can directly move to Bob's building since heights[0] < heights[7].
+In the second query, Alice and Bob can move to building 6 since heights[3] < heights[6] and heights[5] < heights[6].
+In the third query, Alice cannot meet Bob since Bob cannot move to any other building.
+In the fourth query, Alice and Bob can move to building 4 since heights[3] < heights[4] and heights[0] < heights[4].
+In the fifth query, Alice can directly move to Bob's building since heights[1] < heights[6].
+For ans[i] != -1, It can be shown that ans[i] is the leftmost building where Alice and Bob can meet.
+For ans[i] == -1, It can be shown that there is no building where Alice and Bob can meet.
 
-Input: n = 7, edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], values = [3,0,6,1,5,2,1], k = 3
-Output: 3
-Explanation: We remove the edge connecting node 0 with 2, and the edge connecting node 0 with 1. The resulting split is valid because:
-- The value of the component containing node 0 is values[0] = 3.
-- The value of the component containing nodes 2, 5, and 6 is values[2] + values[5] + values[6] = 9.
-- The value of the component containing nodes 1, 3, and 4 is values[1] + values[3] + values[4] = 6.
-It can be shown that no other valid split has more than 3 connected components.
 
 
  
 
 Constraints:
 
- * 1 <= n <= 3 * 104
- * edges.length == n - 1
- * edges[i].length == 2
- * 0 <= ai, bi < n
- * values.length == n
- * 0 <= values[i] <= 109
- * 1 <= k <= 109
- * Sum of values is divisible by k.
- * The input is generated such that edges represents a valid tree.*/
+ * 1 <= heights.length <= 5 * 104
+ * 1 <= heights[i] <= 109
+ * 1 <= queries.length <= 5 * 104
+ * queries[i] = [ai, bi]
+ * 0 <= ai, bi <= heights.length - 1*/
 
 
 class Solution {
